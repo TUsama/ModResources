@@ -23,6 +23,15 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
 
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+archivesBaseName = "${mod_archive_name}-${minecraft_version}"
+version = project.mod_version
+group = project.maven_group
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
 dependencies {
 
     minecraft([
