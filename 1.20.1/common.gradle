@@ -9,13 +9,15 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '6+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '+'
+		classpath group: 'me.modmuss50.mod-publish-plugin', name: 'Mod-Publish', version: '0.5.0', changing: true
+    
     }
 }
 
 
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'me.modmuss50.mod-publish-plugin' version "0.5.0"
+apply plugin: 'me.modmuss50.mod-publish-plugin'
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
