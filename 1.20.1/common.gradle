@@ -12,13 +12,6 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
-apply plugin: 'org.spongepowered.mixin'
-
-
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 archivesBaseName = "${mod_archive_name}-${minecraft_version}"
