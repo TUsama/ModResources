@@ -19,14 +19,6 @@ dependencies {
     }
 }
 
-repositories {
-    flatDir { dirs 'libs' }
-}
-
-dependencies {
-    implementation fg.deobf("blank:Library_of_Exile-${minecraft_version}:${exile_library_version}")
-}
-
 jar {
     manifest {
         attributes([
