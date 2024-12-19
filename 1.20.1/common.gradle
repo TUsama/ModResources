@@ -1,4 +1,3 @@
-
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 archivesBaseName = "${mod_archive_name}-${minecraft_version}"
@@ -28,51 +27,6 @@ dependencies {
     implementation fg.deobf("blank:Library_of_Exile-${minecraft_version}:${exile_library_version}")
 }
 
-minecraft {
-
-    mappings channel: "${mapping_channel}", version: "${mapping_version}-${minecraft_version}"
-
-    runs {
-        client {
-            workingDirectory project.file('run')
-            arg "-mixin.config=${mod_id}-mixins.json"
-            // This makes dependencies with mixins work
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
-            // This makes dependencies with mixins work
-            mods {
-                modid {
-                    source sourceSets.main
-                }
-            }
-        }
-        server {
-            workingDirectory project.file('run')
-            arg "-mixin.config=${mod_id}-mixins.json"
-            // This makes dependencies with mixins work
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
-            // This makes dependencies with mixins work
-            mods {
-                modid {
-                    source sourceSets.main
-                }
-            }
-        }
-        data {
-            workingDirectory project.file('run')
-            arg "-mixin.config=${mod_id}-mixins.json"
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', '${mod_id}', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-            mods {
-                modid {
-                    source sourceSets.main
-                }
-            }
-        }
-    }
-}
-
 jar {
     manifest {
         attributes([
@@ -90,26 +44,4 @@ tasks.withType(JavaCompile) {
 apply plugin: 'org.spongepowered.mixin'
 mixin {
     add sourceSets.main, "${mod_id}.refmap.json"
-}
-
-publishMods {
-    file = jar.archiveFile
-    changelog = file("CHANGELOG.txt").text
-    type = "${release_type}".startsWith("release") ? STABLE : ("${release_type}".startsWith("beta") ? BETA : ALPHA)
-    modLoaders.add("forge")
-    displayName = "${mod_archive_name}-${minecraft_version}-v${mod_version}"
-
-    curseforge {
-        accessToken = file("key.properties").text
-        projectId = "${curse_id}"
-        minecraftVersions.add("${minecraft_version}")
-        minecraftVersions.add("1.20")
-    }
-	
-    modrinth {
-        accessToken = file("modrinth_key.properties").text
-        projectId = "${modrinth_id}"
-        minecraftVersions.add("${minecraft_version}")
-        minecraftVersions.add("1.20")
-    }
 }
