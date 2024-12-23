@@ -6,7 +6,6 @@ jar {
                 "MixinConfigs"  : "${mod_id}-mixins.json"
         ])
     }
-    finalizedBy 'reobfJar'
 }
 
 mixin {
