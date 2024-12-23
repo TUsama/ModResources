@@ -19,21 +19,8 @@ dependencies {
     }
 }
 
-jar {
-    manifest {
-        attributes([
-                "MixinConnector": "com.robertx22.${mod_id}.MixinConnector",
-                "MixinConfigs"  : "${mod_id}-mixins.json"
-        ])
-    }
-    finalizedBy 'reobfJar'
-}
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
 apply plugin: 'org.spongepowered.mixin'
-mixin {
-    add sourceSets.main, "${mod_id}.refmap.json"
-}
