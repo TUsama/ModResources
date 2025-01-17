@@ -1,6 +1,6 @@
 repositories {
     flatDir { dirs 'libs' }
-    flatDir { dirs 'D:\flatdir' }	
+    flatDir { dirs 'D:/flatdir' }	
 }
 
 dependencies {
