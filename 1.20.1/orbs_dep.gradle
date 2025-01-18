@@ -4,5 +4,5 @@ repositories {
 }
 
 dependencies {
-    implementation fg.deobf("blank:Orbs-of-Crafting-${minecraft_version}:${exile_library_version}")
+    implementation fg.deobf("blank:Orbs-of-Crafting-${minecraft_version}:${orbs_of_crafting_version}")
 }
