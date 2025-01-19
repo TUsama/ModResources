@@ -9,6 +9,7 @@ def mod_website_link = getConfig("mod_website_link")
 def mod_issues_link = getConfig("mod_issues_link")
 def mod_display_name = getConfig("mod_display_name")
 def exile_library_version = getConfig("exile_library_version")
+def orbs_of_crafting_version = getConfig("orbs_of_crafting_version")
 
 processResources {
     // set up properties for filling into metadata
@@ -18,6 +19,7 @@ processResources {
             "mod_issues_link" : mod_issues_link,
             "mod_website_link": mod_website_link,
             "exile_library_version": exile_library_version,
+            "orbs_of_crafting_version": orbs_of_crafting_version,
             "mod_display_name": mod_display_name
     ]
     inputs.properties(properties)
