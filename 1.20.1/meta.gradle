@@ -18,18 +18,16 @@ processResources {
             "mod_website_link": mod_website_link,
             "mod_display_name": mod_display_name
     ]
-    // why not just make sure all gradle properties can be used?
-	
+
 for (final def key in project.properties.keySet()) {
     if (project.properties.get(key) instanceof String) {
         def value = project.properties.get(key);
         props.put(key, value);
     }
 }
-
     inputs.properties(props)
 
     filesMatching("META-INF/mods.toml") {
-        expand properties
+        expand props
     }
 }
