@@ -19,10 +19,13 @@ processResources {
             "mod_display_name": mod_display_name
     ]
     // why not just make sure all gradle properties can be used?
-    for (final def key in properties.keySet()) {
-        def value = properties.get(key);
+	
+for (final def key in project.properties.keySet()) {
+    if (project.properties.get(key) instanceof String) {
+        def value = project.properties.get(key);
         props.put(key, value);
     }
+}
 
     inputs.properties(props)
 
