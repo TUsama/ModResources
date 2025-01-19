@@ -1,5 +1,8 @@
 
 String getConfig(String key) {
+   if (!project.properties.containsKey(key)){
+        return "missing_or_empty_key";
+    }
     return project.properties.get(key)
 }
 
