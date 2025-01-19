@@ -1,8 +1,5 @@
 
 String getConfig(String key) {
-   if (!project.properties.containsKey(key)){
-        return "missing_or_empty_key";
-    }
     return project.properties.get(key)
 }
 
@@ -11,21 +8,23 @@ def mod_version = getConfig("mod_version")
 def mod_website_link = getConfig("mod_website_link")
 def mod_issues_link = getConfig("mod_issues_link")
 def mod_display_name = getConfig("mod_display_name")
-def exile_library_version = getConfig("exile_library_version")
-def orbs_of_crafting_version = getConfig("orbs_of_crafting_version")
 
 processResources {
     // set up properties for filling into metadata
-    var properties = [
+    var props = [
             "mod_version"     : mod_version,
             "mod_id"          : mod_id,
             "mod_issues_link" : mod_issues_link,
             "mod_website_link": mod_website_link,
-            "exile_library_version": exile_library_version,
-            "orbs_of_crafting_version": orbs_of_crafting_version,
             "mod_display_name": mod_display_name
     ]
-    inputs.properties(properties)
+    // why not just make sure all gradle properties can be used?
+    for (final def key in properties.keySet()) {
+        def value = properties.get(key);
+        props.put(key, value);
+    }
+
+    inputs.properties(props)
 
     filesMatching("META-INF/mods.toml") {
         expand properties
