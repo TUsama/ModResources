@@ -1,7 +1,7 @@
 repositories {
-    flatDir { dirs 'C:\MC Mods\orbs_of_crafting\build\libs' } 
+    flatDir { dirs 'C:/MC Mods/orbs_of_crafting/build/libs' } 
     flatDir { dirs 'libs' }
-    flatDir { dirs 'D:\flatdir' }	
+    flatDir { dirs 'D:/flatdir' }	
 }
 
 dependencies {
