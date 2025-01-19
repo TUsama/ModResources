@@ -1,4 +1,5 @@
 repositories {
+    flatDir { dirs 'C:/Library-of-Exile/build/libs' }
     flatDir { dirs 'libs' }
     flatDir { dirs 'D:/flatdir' }	
 }
